@@ -18,3 +18,6 @@ or
 ```bash
 C:\...\simple_python_game_app>pip install -e .
 ```
+
+## TODO
+* setup.py 에 설정되지 않는 라이브러리를 사용해도 별다른 오류가 없음.
