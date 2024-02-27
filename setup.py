@@ -8,6 +8,7 @@ setup(
     keywords="",
     packages=[],
     install_requires=[
+        "setuptools>=69.1,<70",
         "pygame>=2.5,<3",
     ],
     python_requires=">=3.12,<4",
