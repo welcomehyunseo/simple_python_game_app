@@ -102,8 +102,15 @@ Dependencies의 버전은 X.Y 로만 명시해야됨.
 파이썬의 버전 명시가 있습니다.
 이 또한 Major 버전이 바뀐다면 호환성이 망가지기 때문에 Major 버전이 바뀌지 않도록 범위를 python_requires=">=3.12,<4" 와 같이 명시해야합니다.
 
+### Data Types
+시스템은 64비트 이기 때문에 
+number 는 64비트
+floating point number 은 32비트 (64비트 시스템에서는 float 과 double 의 속도 차이가 없음)
+
 ## TODO
+
+* 시스템이 64비트 인지 확인하는 코드를 심어야됨.
 
 ## Done
 * setup.py 에 설정되지 않는 라이브러리를 사용해도 별다른 오류가 없음. 
-    * Convection 을 정해서 해결
+    * Convention 을 정해서 해결
