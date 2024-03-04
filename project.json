@@ -1,0 +1,8 @@
+{
+    "name": "simple_python_game_app",
+    "version": "1.0.0",
+    "requirements": [
+        "python>=3.1,<4",
+        "pygame>=2.5,<3"
+    ]
+}

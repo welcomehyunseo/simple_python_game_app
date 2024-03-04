@@ -4,6 +4,22 @@ This is skeleton project to make simple 2D game application in Python.
 
 ## Convections
 
+### Notes
+#### 현재 애플리케이션의 가능한 동작
+개발용으로 설치
+실행
+
+#### 다른 파이썬 버전 사용하기
+
+#### 다른 버전의 동일한 이름의 패키지는 존재할 수 없다.
+여러개의 버전을 함께 사용할 수 없다. 
+그래서 새로운 버전으로 어떤 패키지를 설치하면 이전버전은 사라진다.
+그래서 다른 프로젝트와 dependencies 가 겹치지 않기위해 가상 환경을 사용한다.
+
+#### 사용하지 않는 패키지
+사용하지 않는 패키지를 발견하면 자동적으로 경고를 주지 않는다.
+수동적으로 uninstall 해야된다.
+
 ### Setup
 This means you are setting up everything you need to get the software running on your computer so you can continue developing and testing it.
 Just follow the steps below:
@@ -28,7 +44,21 @@ C:\...\python_projects>git clone <repo>
 
 #### Install Python on Windows
 Visit the [Python Downloads](https://www.python.org/downloads/) page, download Python with the version specified in the 'setup.py' file, and proceed with the installation.
-It must be downloaded with the version of Python specified.
+
+```py
+# setup.py
+from setuptools import setup
+
+...
+
+setup(
+    ...,
+    python_requires=">=3.12,<4",
+)
+```
+
+Once again, it must be downloaded with the specified version.
+You can install is as shown below.
 
 ```bash
 C:\...\simple_python_game_app>python --version
@@ -45,14 +75,15 @@ Python 3.12.2
 #### Create Virtual Environment & Activate
 
 Creating of virtual environment in done by executing the command venv.
-You will need to check your Python version.
+You will need to check your Python version to create.
 
 ```bash
 C:\...\simple_python_game_app>python -m venv .venv
 
 ```
 
-A virtual environment will be activated using a script in its binary directory '.venv'. The invocation of the activation script is platform-specific.
+A virtual environment will be activated using a script in its binary directory '.venv'. 
+The invocation of the activation script is platform-specific.
 
 | Platform    | Shell          | Command to activate                 |
 | ----------- | -------------- | ----------------------------------- | 
@@ -67,23 +98,48 @@ C:\...\simple_python_game_app>.venv\Scripts\activate
 From now, All development activities do with the virtual environment.
 
 #### Install Setuptools
-Setuptools is a package development process library designed to facilitate packaging Python projects.
+Setuptools is a collection of Python utilities that facilitate packaging, distributing, and installing Python software. 
+The setup.py file is a crucial part of a Python project that uses setuptools.
+It also must be installed with the version specified in the 'setup.py' file.
 
-```bash
-(.venv) C:\...\simple_python_game_app>python -m pip install setuptools==X.Y
+```py
+# setup.py
+from setuptools import setup
+
+...
+
+setup(
+    ...,
+    install_requires=[
+        "setuptools>=69.1,<70",
+        ...,
+    ],
+    ...,
+)
 ```
 
-The version X.Y is specified in the 'setup.py', like 39.1
+You can install is as shown below.
 
-#### Install Project as Package in development mode
+```bash
+(.venv) C:\...\simple_python_game_app>python -m pip install setuptools==39.1
+```
 
-Setuptools allows you to install a package without copying any files to your interpreter directory (e.g. the site-packages directory). 
-This allows you to modify your source code and have the changes take effect without you having to rebuild and reinstall. 
+#### Packaging Project
+
+프로젝트를 패키징하는 이유는 setuptool에 정의된 레시피대로 알아서 설치해주기 때문입니다.
+그렇기에 개발용으로 설치를 해야 됩니다.
+
+In development mode, setuptools allows you to install a package without copying any files to your interpreter directory (e.g. the site-packages directory).
+This allows you to modify your source code and have the changes take effect without you having to rebuild and reinstall.
+
 Here’s how to do it:
 
 ```bash
 (.venv) C:\...\simple_python_game_app>python -m pip install -e .
 ```
+
+##### Release
+Not Yet...
 
 ### Uninstall Dependencies
 
@@ -93,14 +149,13 @@ Dependencies 란 해당 프로젝트의 패키지를 빌드할때 같이 사용�
 
 ### Version Control
 
-Dependencies의 버전은 X.Y 로만 명시해야됨. 
-기존의 Major 버전이 넘어가는 버전을 사용하는 것을 방지하고자 "pygame>=2.5,<3" 와 같이 명시해야됨.
-
+#### Project
 해당 프로젝트의 버전은 1.0.0 부터 시작함.
 프로젝트의 버전 관리는 Semantic Versioning 2.0.0 를 따름.
 
-파이썬의 버전 명시가 있습니다.
-이 또한 Major 버전이 바뀐다면 호환성이 망가지기 때문에 Major 버전이 바뀌지 않도록 범위를 python_requires=">=3.12,<4" 와 같이 명시해야합니다.
+#### Dependencies and Python
+두자리 까지만 작성한다. (X.Y)
+기존의 Major 버전이 넘어가는 버전을 사용하는 것을 방지하고자 "pygame>=2.5,<3" 와 같이 명시해야됨.
 
 ### Data Types
 시스템은 64비트 이기 때문에 
