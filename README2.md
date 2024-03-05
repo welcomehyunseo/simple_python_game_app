@@ -2,18 +2,46 @@
 
 ## project.py
 
+### Setup
+
+```bash
+C:\...\simple_python_game_app> python project.py setup
+```
+
+프로젝트를 받았을때 필요한 것들을 모두 준비해주는 기능
+
 ### Run
+
+```bash
+C:\...\simple_python_game_app> python project.py run
+```
+
 실행하는 방법
 project.json 에 작성된 정보를 바탕으로 등록되지 않는 dependency 사용시 에러 발생.
 
 ### Prune
+
+```bash
+C:\...\simple_python_game_app> python project.py prune
+```
+
 This command removes "extraneous" packages.
 
 ### Install
+
+```bash
+C:\...\simple_python_game_app> python project.py install <some_package>
+```
+
 dependency 설치
 자동으로 project.json 업데이트함.
 
 ### Uninstall
+
+```bash
+C:\...\simple_python_game_app> python project.py uninstall <some_package>
+```
+
 dependency 삭제
 자동으로 project.json 업데이트함.
 
@@ -40,19 +68,20 @@ Semantic Versioning 2.0.0 를 따름.
 문자열의 배열로 작성
 파이썬 및 필요한 패키지의 이름을 작성합니다.
 
-### Version Specifier
+### Version Constraint
 This allow manually specifying a version range or an exact version to depend on.
 버전 제약은 requirments 에 작성된 이름들의 오른쪽에 추가하는 것으로써 굳이 작성하지 않아도 됩니다.
 버전 제약을 콤마로 구분하여 제한없이 추가할 수 있습니다.
 
 Here are some examples of requirements:
+
 ```text
-"python>=3.2.0"
-"python>2"
-"python<3"
-"python!=2.3"
-"python==3.1"
-"python>=3.2.0,<4"
+"some_package>=3.2.0"
+"some_package>2"
+"some_package<3"
+"some_package!=2.3"
+"some_package==3.1"
+"some_package>=3.2.0,<4"
 ```
 
 ## TODO
